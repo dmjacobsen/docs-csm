@@ -210,13 +210,13 @@ Before rebooting NCNs:
 
             ```bash
             USERNAME=root
-            read -s IPMI_PASSWORD
+            read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
             ```
 
             ```bash
             export IPMI_PASSWORD
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power off
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power off
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power status
             ```
 
             Ensure that the power is reporting as off. It may take 5-10 seconds for this to update.
@@ -227,8 +227,8 @@ Before rebooting NCNs:
             > In the example commands below, be sure to replace `<node>` with the name of the node being rebooted. For example, `ncn-s002`.
 
             ```bash
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power on
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power on
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power status
             ```
 
             Ensure that the power is reporting as on. It may take 5-10 seconds for this to update.
@@ -394,13 +394,13 @@ Before rebooting NCNs:
 
             ```bash
             USERNAME=root
-            read -s IPMI_PASSWORD
+            read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
             ```
 
             ```bash
             export IPMI_PASSWORD
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power off
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power off
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power status
             ```
 
             Ensure that the power is reporting as off. It may take 5-10 seconds for this to update.
@@ -411,8 +411,8 @@ Before rebooting NCNs:
             > In the example commands below, be sure to replace `<node>` with the name of the node being rebooted. For example, `ncn-w002`.
 
             ```bash
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power on
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power on
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power status
             ```
 
             Ensure that the power is reporting as on. It may take 5-10 seconds for this to update.
@@ -528,13 +528,13 @@ Before rebooting NCNs:
 
             ```bash
             USERNAME=root
-            read -s IPMI_PASSWORD
+            read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
             ```
 
             ```bash
             export IPMI_PASSWORD
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power off
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power off
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power status
             ```
 
             Ensure that the power is reporting as off. It may take 5-10 seconds for this to update.
@@ -545,8 +545,8 @@ Before rebooting NCNs:
             > In the example commands below, be sure to replace `<node>` with the name of the node being rebooted. For example, `ncn-m002`.
 
             ```bash
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power on
-            ipmitool -U $USERNAME -E -H <node>-mgmt -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power on
+            ipmitool -U "$USERNAME" -E -H <node>-mgmt -I lanplus power status
             ```
 
             Ensure that the power is reporting as on. It may take 5-10 seconds for this to update.
@@ -632,12 +632,12 @@ Before rebooting NCNs:
 
         ```bash
         USERNAME=root
-        read -s IPMI_PASSWORD
+        read -r -s -p "ncn-m001 BMC $USERNAME password: " IPMI_PASSWORD
         ```
 
         ```bash
         export IPMI_PASSWORD
-        ipmitool -U $USERNAME -E -H <ncn-m001-bmc> -I lanplus power status
+        ipmitool -U "$USERNAME" -E -H <ncn-m001-bmc> -I lanplus power status
         ```
 
         1. Power off `ncn-m001`.
@@ -645,8 +645,8 @@ Before rebooting NCNs:
             > In the example commands below, be sure to replace `<ncn-m001-bmc>` with the external IP or hostname of the BMC of `ncn-m001`.
 
             ```bash
-            ipmitool -U $USERNAME -E -H <ncn-m001-bmc> -I lanplus power off
-            ipmitool -U $USERNAME -E -H <ncn-m001-bmc> -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <ncn-m001-bmc> -I lanplus power off
+            ipmitool -U "$USERNAME" -E -H <ncn-m001-bmc> -I lanplus power status
             ```
 
             Ensure that power is reporting as off. It may take 5-10 seconds for this to update.
@@ -657,8 +657,8 @@ Before rebooting NCNs:
             > In the example commands below, be sure to replace `<ncn-m001-bmc>` with the external IP or hostname of the BMC of `ncn-m001`.
 
             ```bash
-            ipmitool -U $USERNAME -E -H <ncn-m001-bmc> -I lanplus power on
-            ipmitool -U $USERNAME -E -H <ncn-m001-bmc> -I lanplus power status
+            ipmitool -U "$USERNAME" -E -H <ncn-m001-bmc> -I lanplus power on
+            ipmitool -U "$USERNAME" -E -H <ncn-m001-bmc> -I lanplus power status
             ```
 
             Ensure that the power is reporting as on. It may take 5-10 seconds for this to update.

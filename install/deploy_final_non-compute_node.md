@@ -259,8 +259,8 @@ The steps in this section load hand-off data before a later procedure reboots th
     ```
 
     ```bash
-    USERNAME=$(whoami)
-    read -S IPMI_PASSWORD
+    USERNAME=root
+    read -r -s -p "ncn-m001 BMC $USERNAME password: " IPMI_PASSWORD
     ```
 
     ```bash
@@ -379,7 +379,7 @@ The steps in this section load hand-off data before a later procedure reboots th
 The next steps require `csi` from the installation media. `csi` will not be provided on an NCN otherwise because
 it is used for Cray installation and bootstrap.
 
-1. (`pit#`) SSH back into `ncn-m001` or restart a local console.
+1. SSH back into `ncn-m001` or restart a local console.
 
 1. (`ncn-m001#`) Resume the typescript.
 
@@ -420,7 +420,7 @@ it is used for Cray installation and bootstrap.
 
 ## 6. Remove the default NTP pool
 
-Run the following command on `ncn-m001` to remove the default pool, which can cause contention issues with NTP.
+(`ncn-m001#`) Run the following command to remove the default pool, in order to prevent contention issues with NTP.
 
 ```bash
 sed -i "s/^! pool pool\.ntp\.org.*//" /etc/chrony.conf
@@ -429,7 +429,7 @@ sed -i "s/^! pool pool\.ntp\.org.*//" /etc/chrony.conf
 ## 7. Configure DNS and NTP on each BMC
 
  > **`NOTE`** Only follow this section if the NCNs are HPE hardware. If the system uses
- > Gigabyte or Intel hardware, skip this section.
+ > Gigabyte or Intel hardware, then skip this section.
 
 Configure DNS and NTP on the BMC for each management node **except `ncn-m001`**.
 However, the commands in this section are all run **on** `ncn-m001`.
@@ -447,8 +447,8 @@ However, the commands in this section are all run **on** `ncn-m001`.
     > **`NOTE`** Using `read -s` for this prevents the credentials from being echoed to the screen or saved in the shell history.
 
     ```bash
-    export USERNAME=$(whoami)
-    read -s IPMI_PASSWORD
+    USERNAME=root
+    read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
     ```
 
     ```bash

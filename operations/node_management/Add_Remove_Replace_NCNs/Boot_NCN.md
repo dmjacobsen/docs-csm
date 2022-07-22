@@ -24,20 +24,20 @@ Boot a master, worker, or storage non-compute node (NCN) that is to be added to 
     BMC=${NODE}-mgmt
     ```
 
-1. Export the root password of the BMC.
+1. Export the `root` user password of the BMC.
 
     > `read -s` is used in order to prevent the password from being echoed to the screen or saved in the shell history.
 
     ```bash
-    read -s IPMI_PASSWORD
+    read -r -s -p "$BMC root password: " IPMI_PASSWORD
     export IPMI_PASSWORD
     ```
 
 1. Check the power status. Power the BMC off if `Chassis Power is on`.
 
     ```bash
-    ipmitool -I lanplus -U root -E -H $BMC chassis power status
-    ipmitool -I lanplus -U root -E -H $BMC chassis power off
+    ipmitool -I lanplus -U root -E -H "$BMC" chassis power status
+    ipmitool -I lanplus -U root -E -H "$BMC" chassis power off
     ```
 
 1. Set the `pxe` `efiboot` option.

@@ -98,10 +98,10 @@ boot order to have the USB device first.
    > `read -s` is used in order to prevent the credentials from being displayed on the screen or recorded in the shell history.
 
    ```bash
-   username=root
+   USERNAME=root
    BMC=eniac-ncn-m001-mgmt
-   read -s IPMI_PASSWORD
-   export IPMI_PASSWORD ; ipmitool -I lanplus -U ${username} -E -H ${BMC} chassis power status
+   read -r -s -p "$BMC $USERNAME password: " IPMI_PASSWORD
+   export IPMI_PASSWORD ; ipmitool -I lanplus -U "${USERNAME}" -E -H "${BMC}" chassis power status
    ```
 
 1. (`external#`) Power the NCN on and connect to the IPMI console.

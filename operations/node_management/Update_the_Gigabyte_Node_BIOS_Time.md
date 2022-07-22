@@ -64,7 +64,7 @@ The following steps should be repeated for each Gigabyte node which needs to hav
 
    ```bash
    USERNAME=root
-   read -s IPMI_PASSWORD
+   read -r -s -p "$BMC $USERNAME password: " IPMI_PASSWORD
    export IPMI_PASSWORD
    ipmitool -I lanplus -U $USERNAME -E -H $BMC chassis bootdev bios
    ipmitool -I lanplus -U $USERNAME -E -H $BMC chassis power off

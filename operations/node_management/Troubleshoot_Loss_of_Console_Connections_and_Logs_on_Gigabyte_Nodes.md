@@ -18,8 +18,8 @@ Console log information is no longer being collected for Gigabyte nodes or ConMa
         > **`NOTE`** `read -s` is used to prevent the password from being displayed on the screen or preserved in the shell history.
 
         ```bash
-        export USERNAME=$(whoami)
-        read -s IPMI_PASSWORD
+        USERNAME=root
+        read -r -s -p "BMC $USERNAME password: " IPMI_PASSWORD
         ```
 
     1. Export the variable.
@@ -27,6 +27,7 @@ Console log information is no longer being collected for Gigabyte nodes or ConMa
         ```bash
         export IPMI_PASSWORD
         ```
+
     1. Deactivate the SOL session for the node.
 
         > **`NOTE`** In the following command, replace `XNAME` with the component name (xname) of the BMC of the affected node.

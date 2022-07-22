@@ -367,7 +367,7 @@ CSM. This is a preventative measure in the event that the boot order on the targ
    BMC=${NODE}-mgmt
    ```
 
-1. **For `ncn-m001` only**: Collect and record the BMC IP address for `ncn-m001` and the CAN IP address for `m002` before `ncn-m001` is powered off. These may be needed later.
+1. (`ncn-m001#`) **For `ncn-m001` only**: Collect and record the BMC IP address for `ncn-m001` and the CMN IP address for `m002` before `ncn-m001` is powered off. These may be needed later.
 
    1. Record the BMC IP address for `ncn-m001`.
 
@@ -382,11 +382,11 @@ CSM. This is a preventative measure in the event that the boot order on the targ
       172.30.52.74
       ```
 
-   1. Record the CAN IP address for `ncn-m002`.
+   1. Record the CMN IP address for `ncn-m002`.
 
       ```bash
-      CAN_IP=$(ip addr show vlan007 | grep "inet " | awk '{print $2}' | cut -f1 -d'/')
-      echo $CAN_IP
+      CMN_IP=$(ssh ncn-m002 ip -4 a show bond0.cmn0 | grep inet | awk '{print $2}' | cut -d / -f1)
+      echo $CMN_IP
       ```
 
       Example output:
@@ -400,23 +400,23 @@ CSM. This is a preventative measure in the event that the boot order on the targ
    > `read -s` is used in order to prevent the password from being echoed to the screen or saved in the shell history.
 
    ```bash
-   read -s IPMI_PASSWORD
+   read -r -s -p "BMC root password: " IPMI_PASSWORD
    export IPMI_PASSWORD
    ```
 
 1. Power off the node.
 
    ```bash
-   ipmitool -I lanplus -U root -E -H $BMC chassis power off
+   ipmitool -I lanplus -U root -E -H "$BMC" chassis power off
    ```
 
 1. Verify that the node is off.
 
    ```bash
-   ipmitool -I lanplus -U root -E -H $BMC chassis power status
+   ipmitool -I lanplus -U root -E -H "$BMC" chassis power status
    ```
 
-   > Ensure the power is reporting as off. This may take 5-10 seconds for this to update. Wait about 30 seconds after receiving the correct power status before issuing any further commands.
+   > Ensure that the power is reporting as off. This may take 5-10 seconds for this to update. Wait about 30 seconds after receiving the correct power status before issuing any further commands.
 
 ## Next Step
 

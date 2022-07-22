@@ -60,7 +60,7 @@ boot-check nodes to dump network device information without an operating system.
     1. Record the password for this user.
 
         ```bash
-        read -s IPMI_PASSWORD
+        read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
         ```
 
     1. Set the nodes to PXE boot and restart them.

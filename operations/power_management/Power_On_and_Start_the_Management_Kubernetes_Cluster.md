@@ -26,7 +26,7 @@ Power on and start management services on the HPE Cray EX management Kubernetes 
 
     ```bash
     USERNAME=root
-    read -s IPMI_PASSWORD
+    read -r -s -p "ncn-m001 BMC $USERNAME password: " IPMI_PASSWORD
     export IPMI_PASSWORD
     ipmitool -I lanplus -U $USERNAME -E -H NCN_M001_BMC_HOSTNAME sol activate
     ```
@@ -37,7 +37,7 @@ Power on and start management services on the HPE Cray EX management Kubernetes 
 
     ```bash
     USERNAME=root
-    read -s IPMI_PASSWORD
+    read -r -s -p "ncn-m001 BMC $USERNAME password: " IPMI_PASSWORD
     export IPMI_PASSWORD
     ipmitool -I lanplus -U $USERNAME -E -H NCN_M001_BMC_HOSTNAME chassis power on
     ```

@@ -59,9 +59,9 @@ A temporary MAC address collection iPXE bootscript is put into place on the syst
         > `read -s` is used in order to prevent the password from being echoed to the screen or saved in the shell history.
 
         ```bash
-        read -s IPMI_PASSWORD
+        read -r -s -p "$BMC_IP root password: " IPMI_PASSWORD
         export IPMI_PASSWORD
-        ipmitool -I lanplus -U root -E -H $BMC_IP chassis power status
+        ipmitool -I lanplus -U root -E -H "$BMC_IP" chassis power status
         ```
 
     1. In another terminal, capture the NCN's Serial Over Lan (SOL) console.
@@ -69,9 +69,9 @@ A temporary MAC address collection iPXE bootscript is put into place on the syst
 
         ```bash
         BMC_IP=10.254.1.20
-        read -s IPMI_PASSWORD
+        read -r -s -p "$BMC_IP root password: " IPMI_PASSWORD
         export IPMI_PASSWORD
-        ipmitool -I lanplus -U root -E -H $BMC_IP sol activate
+        ipmitool -I lanplus -U root -E -H "$BMC_IP" sol activate
         ```
 
         > Note when disconnecting from the IPMI SOL console you can perform the key sequence `~~.` to exit `ipmitool` without exiting your SSH session.

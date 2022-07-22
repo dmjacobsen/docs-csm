@@ -25,7 +25,7 @@ Remove NCN data to System Layout Service (SLS), Boot Script Service (BSS), and H
     > `read -s` is used in order to prevent the password from being echoed to the screen or saved in the shell history.
 
     ```bash
-    read -s IPMI_PASSWORD
+    read -r -s -p "BMC ${IPMI_USERNAME-root} password: " IPMI_PASSWORD
     export IPMI_PASSWORD
     ```
 

@@ -39,12 +39,13 @@ Preparation of the environment must be done before attempting to deploy the mana
 
 1. (`pit#`) Define shell environment variables that will simplify later commands to deploy management nodes.
 
-   1. Set `IPMI_PASSWORD` to the `root` password for the NCN BMCs.
+   1. Set `USERNAME` and `IPMI_PASSWORD` to the credentials for the NCN BMCs.
 
       > `read -s` is used to prevent the password from being written to the screen or the shell history.
 
       ```bash
-      read -s IPMI_PASSWORD
+      USERNAME=root
+      read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
       ```
 
    1. Set the remaining helper variables.
@@ -52,7 +53,7 @@ Preparation of the environment must be done before attempting to deploy the mana
       > These values do not need to be altered from what is shown.
 
       ```bash
-      export IPMI_PASSWORD ; mtoken='ncn-m(?!001)\w+-mgmt' ; stoken='ncn-s\w+-mgmt' ; wtoken='ncn-w\w+-mgmt' ; USERNAME=root
+      export IPMI_PASSWORD ; mtoken='ncn-m(?!001)\w+-mgmt' ; stoken='ncn-s\w+-mgmt' ; wtoken='ncn-w\w+-mgmt'
       ```
 
 ### 1.2. BIOS baseline

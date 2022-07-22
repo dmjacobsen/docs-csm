@@ -17,7 +17,7 @@ A new non-compute node \(NCN\) has been added to the system as a hardware replac
     > `read -s` is used to enter the password in order to prevent it from being echoed to the screen or saved in the shell history.
 
     ```bash
-    read -s IPMI_PASSWORD
+    read -r -s -p "BMC root password: " IPMI_PASSWORD
     export IPMI_PASSWORD
     ipmitool -I lanplus -U root -E -H NCN_NODE-mgmt power status
     ```
@@ -34,9 +34,9 @@ A new non-compute node \(NCN\) has been added to the system as a hardware replac
 
     ```bash
     USERNAME=defaultuser
-    read -s IPMI_PASSWORD
+    read -r -s -p "BMC $USERNAME password: " IPMI_PASSWORD
     export IPMI_PASSWORD
-    ipmitool -I lanplus -U $USERNAME -E -H NCN_NODE-mgmt power status
+    ipmitool -I lanplus -U "$USERNAME" -E -H NCN_NODE-mgmt power status
     ```
 
     Example output:

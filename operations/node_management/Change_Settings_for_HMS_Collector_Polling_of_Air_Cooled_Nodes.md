@@ -69,9 +69,9 @@ To restart the BMCs:
 
 ```bash
 USERNAME=root
-read -s IPMI_PASSWORD
+read -r -s -p "BMC $USERNAME password: " IPMI_PASSWORD
 export IPMI_PASSWORD
-ipmitool -H BMC_HOSTNAME -U $USERNAME -E -I lanplus mc reset cold
+ipmitool -H BMC_HOSTNAME -U "$USERNAME" -E -I lanplus mc reset cold
 ```
 
 If the reset does not recover the BMCs, then use the following steps to shut down the nodes, unplug the servers, and plug them back in:

@@ -44,8 +44,8 @@ The upcoming procedures use `ipmitool`. Set IPMI credentials for the BMCs of the
 1. (`ncn#` or `pit#`) Set the username and IPMI password:
 
    ```bash
-   username=$(whoami)
-   read -s IPMI_PASSWORD
+   username=root
+   read -r -s -p "NCN BMC $username password: " IPMI_PASSWORD
    ```
 
 1. (`ncn#` or `pit#`) Export `IPMI_PASSWORD` for the `-E` option to work on `ipmitool`:

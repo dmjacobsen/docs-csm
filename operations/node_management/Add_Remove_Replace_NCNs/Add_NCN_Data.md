@@ -350,7 +350,7 @@ Scenarios where this procedure is applicable:
     > `read -s` is used to read the password in order to prevent it from being echoed to the screen or recorded in the shell history.
 
     ```bash
-    read -s IPMI_PASSWORD
+    read -r -s -p "BMC root password: " IPMI_PASSWORD
     export IPMI_PASSWORD
     ipmitool -U root -I lanplus -E -H "$BMC_IP" mc reset cold
     sleep 60

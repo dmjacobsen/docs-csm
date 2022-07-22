@@ -215,7 +215,7 @@ echo $XNAME
       > another way.
 
       ```bash
-      read -s IPMI_PASSWORD
+      read -r -s -p "NCN BMC root password: " IPMI_PASSWORD
       export IPMI_PASSWORD
       curl -k -u root:$IPMI_PASSWORD https://NCN_NODE-mgmt/redfish/v1/Managers/1/NetworkProtocol | jq .IPMI
       ```

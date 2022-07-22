@@ -152,7 +152,7 @@ In the following procedures, unless otherwise directed, run the commands on the 
     ```bash
     NCN_NAME=ncn-w999
     USERNAME=root
-    read -s IPMI_PASSWORD
+    read -r -s -p "$NCN_NAME BMC $USERNAME password: " IPMI_PASSWORD
     export IPMI_PASSWORD    
     ipmitool -U $USERNAME -E -I lanplus -H ${NCN_NAME}-mgmt power off; sleep 5;
     ipmitool -U $USERNAME -E -I lanplus -H ${NCN_NAME}-mgmt power show; echo

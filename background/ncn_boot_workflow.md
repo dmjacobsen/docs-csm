@@ -99,7 +99,7 @@ artifacts each node needs to boot. So if the BMCs are set to static, those artif
 
 ```bash
 USERNAME=root
-read -s IPMI_PASSWORD
+read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
 export IPMI_PASSWORD
 for h in $( grep mgmt /etc/hosts | grep -v m001 | awk -F ',' '{print $2}' ); do
     ipmitool -U $USERNAME -I lanplus -H $h -E lan set 1 ipsrc dhcp
@@ -286,7 +286,7 @@ Reset the BIOS. Refer to vendor documentation for resetting the BIOS or attempt 
 >
 > ```bash
 > USERNAME=root
-> read -s IPMI_PASSWORD
+> read -r -s -p "NCN BMC $USERNAME password: " IPMI_PASSWORD
 > export IPMI_PASSWORD
 > ipmitool -I lanplus -U $USERNAME -E -H <bmc-hostname>
 > ```

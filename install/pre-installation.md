@@ -628,7 +628,7 @@ Follow the [Prepare Site Init](prepare_site_init.md) procedure.
 1. (`pit#`) Set the `IPMI_PASSWORD` variable.
 
    ```bash
-   read -s IPMI_PASSWORD
+   read -r -s -p "NCN BMC root password: " IPMI_PASSWORD
    ```
 
 1. (`pit#`) Export the `IPMI_PASSWORD` variable.
